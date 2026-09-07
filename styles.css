@@ -33,6 +33,10 @@ body.menu-open {
   overflow: hidden;
 }
 
+body.menu-open .site-header {
+  backdrop-filter: none;
+}
+
 img {
   display: block;
   max-width: 100%;
