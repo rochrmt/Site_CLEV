@@ -4,5 +4,4 @@
 docker-compose.yml
 Dockerfile
 php.ini
-php.ini.docker
 nginx.conf
