@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="CLEV Beauty & Spa à Bangui — soins du visage, massages, onglerie, coiffure, maquillage, hammam et gommage."
+    />
+    <meta name="theme-color" content="#f6f1ea" />
+    <title>CLEV Beauty & Spa — Votre beauté, notre priorité</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Italiana&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Aller au contenu</a>
+
+    <header class="site-header" data-header>
+      <a class="brand" href="#accueil" aria-label="CLEV Beauty & Spa — Accueil">
+        <img src="assets/images/clev-logo.jpg" alt="" />
+        <span>
+          <strong>CLEV</strong>
+          <small>Beauty & Spa</small>
+        </span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span class="sr-only">Ouvrir le menu</span>
+      </button>
+
+      <nav id="main-nav" class="main-nav" aria-label="Navigation principale">
+        <a href="#services">Nos soins</a>
+        <a href="#experience">L'institut</a>
+        <a href="#galerie">Galerie</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a class="header-cta" href="#reservation">Prendre rendez-vous</a>
+    </header>
+
+    <main id="main">
+      <section id="accueil" class="hero">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Institut de beauté à Bangui</p>
+          <h1 class="hero-rotator" data-rotator>
+            <span class="rotator-primary">Votre beauté.</span><br /><em class="rotator-secondary">Votre moment.</em>
+          </h1>
+          <p class="hero-intro">
+            Une parenthèse de douceur dédiée à votre bien-être, où chaque soin révèle ce
+            qui vous rend unique.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="tel:+23673232713">
+              Réserver un soin
+              <svg aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </a>
+            <a class="text-link" href="#services">Découvrir nos soins</a>
+          </div>
+          <div class="hero-note">
+            <span class="hero-note-icon" aria-hidden="true">✦</span>
+            <p><strong>Beauté & bien-être</strong>Des soins experts dans une atmosphère apaisante.</p>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal reveal-delay">
+          <div class="hero-carousel" data-carousel>
+            <div class="hero-carousel-track">
+              <img
+                src="assets/images/spa-room-wide.jpg"
+                alt="Cabine de soins lumineuse de CLEV Beauty & Spa"
+              />
+              <img
+                src="assets/images/double-treatment-room.jpg"
+                alt="Cabine double pour soins du visage"
+                loading="lazy"
+              />
+              <img
+                src="assets/images/nail-studio.jpg"
+                alt="Espace onglerie équipé de CLEV Beauty & Spa"
+                loading="lazy"
+              />
+              <img
+                src="assets/images/facial-station.jpg"
+                alt="Poste de soin du visage professionnel"
+                loading="lazy"
+              />
+              <img
+                src="assets/images/gallery-extra-6.jpg"
+                alt="Notre équipe et notre institut CLEV Beauty & Spa"
+                loading="lazy"
+              />
+            </div>
+            <button class="hero-carousel-prev" type="button" aria-label="Image précédente" data-carousel-prev>
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6" /></svg>
+            </button>
+            <button class="hero-carousel-next" type="button" aria-label="Image suivante" data-carousel-next>
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" /></svg>
+            </button>
+            <div class="hero-carousel-dots" data-carousel-dots aria-hidden="true"></div>
+          </div>
+          <div class="hero-seal" aria-hidden="true">
+            <span>Prendre soin de soi</span>
+            <strong>CB</strong>
+          </div>
+          <div class="hero-location">
+            <svg aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z" />
+              <circle cx="12" cy="10" r="2.5" />
+            </svg>
+            <p><span>Retrouvez-nous à</span><strong>200 Villas, Bangui</strong></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="manifesto" aria-label="Notre philosophie">
+        <p class="eyebrow reveal">La signature CLEV</p>
+        <h2 class="reveal">
+          Plus qu'un soin, une expérience pensée pour
+          <em data-rotator-manifesto>vous faire rayonner.</em>
+        </h2>
+        <div class="manifesto-line" aria-hidden="true"></div>
+      </section>
+
+      <section id="services" class="services section">
+        <div class="section-heading reveal">
+          <div>
+            <p class="eyebrow">Nos expertises</p>
+            <h2>La beauté dans<br />tous ses détails</h2>
+          </div>
+          <p>
+            Des gestes précis, des attentions délicates et une approche personnalisée pour
+            répondre à chacune de vos envies.
+          </p>
+        </div>
+
+        <div class="service-grid">
+          <a class="service-card reveal" href="services/onglerie.html">
+            <span class="service-number">01</span>
+            <svg class="service-icon" aria-hidden="true" viewBox="0 0 48 48">
+              <path d="M15 33c3-10 4-19 9-19s6 9 9 19" />
+              <path d="M12 35h24M18 27h12M21 18V9M27 18V9" />
+            </svg>
+            <h3>Onglerie</h3>
+            <p>Manucure et pédicure pour des mains et des pieds parfaitement soignés.</p>
+            <span class="service-link">En savoir plus →</span>
+          </a>
+
+          <a class="service-card service-card-featured reveal reveal-delay" href="services/soins-du-visage.html">
+            <span class="service-number">02</span>
+            <svg class="service-icon" aria-hidden="true" viewBox="0 0 48 48">
+              <path d="M10 30c5-1 8-4 11-10 3 6 6 9 17 10" />
+              <path d="M9 34c9 5 21 5 30 0M24 8v7M17 11l3 6M31 11l-3 6" />
+            </svg>
+            <h3>Soins du visage</h3>
+            <p>Des rituels ciblés pour une peau fraîche, lumineuse et revitalisée.</p>
+            <span class="service-link">En savoir plus →</span>
+          </a>
+
+          <a class="service-card reveal" href="services/massage-epilation.html">
+            <span class="service-number">03</span>
+            <svg class="service-icon" aria-hidden="true" viewBox="0 0 48 48">
+              <path d="M12 31c6-2 8-7 12-15 4 8 6 13 12 15" />
+              <path d="M9 35c9 5 21 5 30 0M24 8v4" />
+            </svg>
+            <h3>Massage & épilation</h3>
+            <p>Détente profonde et peau douce grâce à des soins réalisés avec délicatesse.</p>
+            <span class="service-link">En savoir plus →</span>
+          </a>
+
+          <a class="service-card reveal" href="services/coiffure.html">
+            <span class="service-number">04</span>
+            <svg class="service-icon" aria-hidden="true" viewBox="0 0 48 48">
+              <path d="M13 35c2-9 3-16 11-22 8 6 9 13 11 22" />
+              <path d="M17 22c4 3 10 3 14 0M16 35h16" />
+            </svg>
+            <h3>Coiffure</h3>
+            <p>Coupes et mise en beauté pour femmes, hommes et enfants.</p>
+            <span class="service-link">En savoir plus →</span>
+          </a>
+
+          <a class="service-card reveal reveal-delay" href="services/maquillage.html">
+            <span class="service-number">05</span>
+            <svg class="service-icon" aria-hidden="true" viewBox="0 0 48 48">
+              <path d="m12 34 8-20 5 14 4-10 7 16" />
+              <path d="M10 36h28M17 10h6M28 14h5" />
+            </svg>
+            <h3>Maquillage</h3>
+            <p>Une mise en beauté élégante et sur mesure pour vos moments précieux.</p>
+            <span class="service-link">En savoir plus →</span>
+          </a>
+
+          <a class="service-card reveal" href="services/hammam-gommage.html">
+            <span class="service-number">06</span>
+            <svg class="service-icon" aria-hidden="true" viewBox="0 0 48 48">
+              <path d="M12 34h24M15 34V20h18v14M19 20v-5h10v5" />
+              <path d="M19 28c3-4 7-4 10 0" />
+            </svg>
+            <h3>Hammam & gommage</h3>
+            <p>Une expérience purifiante pour libérer les tensions et retrouver de l'éclat.</p>
+            <span class="service-link">En savoir plus →</span>
+          </a>
+        </div>
+      </section>
+
+      <section id="experience" class="experience">
+        <div class="experience-image reveal">
+          <img
+            src="assets/images/nail-studio.jpg"
+            alt="Espace onglerie équipé de CLEV Beauty & Spa"
+            loading="lazy"
+          />
+          <span>Un espace rien que pour vous</span>
+        </div>
+        <div class="experience-copy reveal reveal-delay">
+          <p class="eyebrow">L'expérience CLEV</p>
+          <h2>Respirez.<br />Nous prenons soin du reste.</h2>
+          <p class="experience-lead">
+            Dès votre arrivée, laissez le rythme ralentir. Notre équipe vous accueille dans
+            un cadre chaleureux pour un moment entièrement consacré à vous.
+          </p>
+          <ul class="experience-list">
+            <li>
+              <span>01</span>
+              <div><strong>Un accueil attentionné</strong><p>Nous écoutons vos envies avant chaque soin.</p></div>
+            </li>
+            <li>
+              <span>02</span>
+              <div><strong>Des soins personnalisés</strong><p>Chaque prestation s'adapte à vos besoins.</p></div>
+            </li>
+            <li>
+              <span>03</span>
+              <div><strong>Une pause ressourçante</strong><p>Un instant de calme pour repartir rayonnante.</p></div>
+            </li>
+          </ul>
+          <a class="button button-outline" href="tel:+23675344460">Appeler l'institut</a>
+        </div>
+      </section>
+
+      <section id="galerie" class="gallery section">
+        <div class="section-heading reveal">
+          <div>
+            <p class="eyebrow">Notre univers</p>
+            <h2>Entrez chez CLEV</h2>
+          </div>
+          <p>
+            Découvrez un institut équipé pour vous offrir confort, intimité et sérénité à
+            chaque visite.
+          </p>
+        </div>
+
+        <div class="gallery-grid">
+          <figure class="gallery-item gallery-item-featured reveal">
+            <img
+              src="assets/images/double-treatment-room.jpg"
+              alt="Cabine double pour soins du visage"
+              loading="lazy"
+            />
+            <figcaption>
+              <span>01</span>
+              <div>
+                <strong>Les cabines de soins</strong>
+                <small>Des espaces calmes et préparés pour vivre votre soin en toute sérénité.</small>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="gallery-item gallery-item-tall reveal reveal-delay">
+            <img
+              src="assets/images/nail-studio.jpg"
+              alt="Espace manucure et pédicure de CLEV Beauty & Spa"
+              loading="lazy"
+            />
+            <figcaption>
+              <span>02</span>
+              <div>
+                <strong>Le studio onglerie</strong>
+                <small>Un poste dédié à la beauté des mains et des pieds, dans un cadre confortable.</small>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="gallery-item reveal">
+            <img
+              src="assets/images/facial-station.jpg"
+              alt="Poste de soin du visage professionnel"
+              loading="lazy"
+            />
+            <figcaption>
+              <span>03</span>
+              <div>
+                <strong>Le soin expert</strong>
+                <small>Des équipements professionnels au service de votre peau et de votre éclat.</small>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="gallery-item gallery-item-wide reveal reveal-delay">
+            <img
+              src="assets/images/spa-room-wide.jpg"
+              alt="Cabine lumineuse avec deux tables de soins"
+              loading="lazy"
+            />
+            <figcaption>
+              <span>04</span>
+              <div>
+                <strong>Une parenthèse à partager</strong>
+                <small>Nos cabines doubles accueillent vos moments de détente en duo.</small>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="gallery-item reveal">
+            <img
+              src="assets/images/treatment-room.jpg"
+              alt="Salle de soins de l'institut CLEV"
+              loading="lazy"
+            />
+            <figcaption>
+              <span>05</span>
+              <div>
+                <strong>Votre espace bien-être</strong>
+                <small>Une atmosphère intime, pensée pour ralentir et prendre soin de vous.</small>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="gallery-item reveal reveal-delay">
+            <img
+              src="assets/images/facial-steamer.jpg"
+              alt="Appareil vapeur professionnel installé dans une cabine de soin"
+              loading="lazy"
+            />
+            <figcaption>
+              <span>06</span>
+              <div>
+                <strong>La précision du geste</strong>
+                <small>Chaque soin du visage bénéficie d'un matériel adapté et d'une attention experte.</small>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="gallery-item gallery-item-wide reveal">
+            <img
+              src="assets/images/facial-room-equipped.jpg"
+              alt="Cabine équipée pour les soins esthétiques"
+              loading="lazy"
+            />
+            <figcaption>
+              <span>07</span>
+              <div>
+                <strong>Des soins bien équipés</strong>
+                <small>Tout est réuni sur place pour vous proposer une expérience beauté complète.</small>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="gallery-item reveal reveal-delay">
+            <img
+              src="assets/images/treatment-preparation.jpg"
+              alt="Préparation d'une cabine de soins CLEV Beauty & Spa"
+              loading="lazy"
+            />
+            <figcaption>
+              <span>08</span>
+              <div>
+                <strong>Prêts à vous accueillir</strong>
+                <small>Les cabines sont préparées avec soin avant chaque rendez-vous.</small>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="gallery-item reveal">
+            <img
+              src="assets/images/gallery-extra-6.jpg"
+              alt="Notre équipe et notre institut CLEV Beauty & Spa"
+              loading="lazy"
+            />
+            <figcaption>
+              <span>09</span>
+              <div>
+                <strong>CLEV Beauty & Spa</strong>
+                <small>Une équipe passionnée à votre service pour révéler votre beauté.</small>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="gallery-item reveal reveal-delay">
+            <img
+              src="assets/images/gallery-extra-1.jpg"
+              alt="Soins et prestations CLEV Beauty & Spa"
+              loading="lazy"
+            />
+            <figcaption>
+              <span>10</span>
+              <div>
+                <strong>Notre savoir-faire</strong>
+                <small>Des gestes précis et une expertise au service de votre bien-être.</small>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="gallery-item reveal">
+            <img
+              src="assets/images/gallery-extra-2.jpg"
+              alt="Ambiance et décor de l'institut CLEV Beauty & Spa"
+              loading="lazy"
+            />
+            <figcaption>
+              <span>11</span>
+              <div>
+                <strong>Une atmosphère unique</strong>
+                <small>Un cadre chaleureux pensé pour votre détente.</small>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="gallery-item reveal reveal-delay">
+            <img
+              src="assets/images/gallery-extra-3.jpg"
+              alt="Détails de soins chez CLEV Beauty & Spa"
+              loading="lazy"
+            />
+            <figcaption>
+              <span>12</span>
+              <div>
+                <strong>L'attention au détail</strong>
+                <small>Chaque soin est réalisé avec précision et délicatesse.</small>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="gallery-item reveal">
+            <img
+              src="assets/images/gallery-extra-4.jpg"
+              alt="Espace bien-être CLEV Beauty & Spa"
+              loading="lazy"
+            />
+            <figcaption>
+              <span>13</span>
+              <div>
+                <strong>Votre moment de détente</strong>
+                <small>Laissez-vous porter par une expérience ressourçante.</small>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="gallery-item reveal reveal-delay">
+            <img
+              src="assets/images/gallery-extra-5.jpg"
+              alt="Prestations beauté CLEV Beauty & Spa"
+              loading="lazy"
+            />
+            <figcaption>
+              <span>14</span>
+              <div>
+                <strong>La beauté sur mesure</strong>
+                <small>Des prestations personnalisées selon vos envies.</small>
+              </div>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="quote-section">
+        <div class="quote-mark" aria-hidden="true">“</div>
+        <blockquote class="reveal quote-rotator">
+          <span class="quote-primary" data-quote-primary>Prendre soin de soi n'est pas un luxe.</span><br />
+          <em class="quote-secondary" data-quote-secondary>C'est une façon de se retrouver.</em>
+        </blockquote>
+        <p class="reveal">CLEV BEAUTY & SPA</p>
+      </section>
+
+      <section id="reservation" class="booking section">
+        <div class="section-heading reveal">
+          <div>
+            <p class="eyebrow">Prise de rendez-vous</p>
+            <h2>Réservez<br />votre soin</h2>
+          </div>
+          <p>
+            Remplissez le formulaire ci-dessous, votre demande sera envoyée
+            directement via WhatsApp à notre équipe pour confirmation.
+          </p>
+        </div>
+
+        <form class="booking-form reveal reveal-delay" id="booking-form" novalidate>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="booking-name">Nom complet *</label>
+              <input type="text" id="booking-name" name="name" placeholder="Votre nom" required />
+            </div>
+            <div class="form-field">
+              <label for="booking-phone">Téléphone *</label>
+              <input type="tel" id="booking-phone" name="phone" placeholder="+236 ..." required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="booking-service">Service souhaité *</label>
+              <select id="booking-service" name="service" required>
+                <option value="" disabled selected>Choisissez un soin</option>
+                <option value="Onglerie">Onglerie</option>
+                <option value="Soins du visage">Soins du visage</option>
+                <option value="Massage & épilation">Massage & épilation</option>
+                <option value="Coiffure">Coiffure</option>
+                <option value="Maquillage">Maquillage</option>
+                <option value="Hammam & gommage">Hammam & gommage</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="booking-date">Date souhaitée</label>
+              <input type="date" id="booking-date" name="date" />
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="booking-message">Précisions (optionnel)</label>
+            <textarea id="booking-message" name="message" rows="3" placeholder="Une demande particulière ? Dites-nous tout."></textarea>
+          </div>
+          <button type="submit" class="button button-primary booking-submit">
+            Envoyer via WhatsApp
+            <svg aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </button>
+          <p class="booking-note">
+            <span aria-hidden="true">✦</span>
+            Votre message s'ouvrira dans WhatsApp pour être envoyé au
+            <strong>+236 72 67 91 75</strong>.
+          </p>
+        </form>
+      </section>
+
+      <section id="contact" class="contact">
+        <div class="contact-intro reveal">
+          <p class="eyebrow">Votre moment commence ici</p>
+          <h2>Prête à<br /><em data-rotator-contact>rayonner ?</em></h2>
+          <p>Contactez-nous pour choisir votre soin et réserver votre parenthèse beauté.</p>
+          <a class="button button-light" href="tel:+23673232713">
+            +236 73 23 27 13
+            <svg aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </a>
+        </div>
+
+        <div class="contact-details reveal reveal-delay">
+          <div class="contact-card">
+            <span>Adresse</span>
+            <p>200 Villas, Avenue Martin NGOKO<br />derrière le BARC, Bangui</p>
+            <a
+              href="https://maps.google.com/?q=200+Villas+Avenue+Martin+NGOKO+Bangui"
+              target="_blank"
+              rel="noreferrer"
+            >Voir sur la carte ↗</a>
+          </div>
+          <div class="contact-card">
+            <span>Nous joindre</span>
+            <p>
+              <a href="tel:+23673232713">+236 73 23 27 13</a><br />
+              <a href="tel:+23675344460">+236 75 34 44 60</a>
+            </p>
+            <a href="mailto:clevbeautyspa@gmail.com">clevbeautyspa@gmail.com</a>
+          </div>
+          <div class="contact-card">
+            <span>Nous suivre</span>
+            <p>Actualités, conseils beauté<br />et nouveautés de l'institut.</p>
+            <a
+              href="https://www.facebook.com/share/1FAd6D6D1x/"
+              target="_blank"
+              rel="noreferrer"
+            >Facebook ↗</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand brand-light" href="#accueil">
+        <img src="assets/images/clev-logo.jpg" alt="" />
+        <span><strong>CLEV</strong><small>Beauty & Spa</small></span>
+      </a>
+      <p>Votre bien-être et votre beauté, notre priorité.</p>
+      <p>© <span data-year></span> CLEV Beauty & Spa</p>
+    </footer>
+
+    <div class="lightbox" role="dialog" aria-modal="true" aria-label="Galerie en plein écran" data-lightbox>
+      <button class="lightbox-close" type="button" aria-label="Fermer la galerie" data-lightbox-close>
+        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" /></svg>
+      </button>
+      <button class="lightbox-prev" type="button" aria-label="Image précédente" data-lightbox-prev>
+        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6" /></svg>
+      </button>
+      <figure class="lightbox-figure">
+        <img src="" alt="" data-lightbox-img />
+        <figcaption class="lightbox-caption" data-lightbox-caption></figcaption>
+      </figure>
+      <button class="lightbox-next" type="button" aria-label="Image suivante" data-lightbox-next>
+        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" /></svg>
+      </button>
+      <p class="lightbox-counter" data-lightbox-counter></p>
+    </div>
+  </body>
+</html>

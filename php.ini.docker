@@ -1,0 +1,4 @@
+extension = gd
+extension = fileinfo
+upload_max_filesize = 16M
+post_max_size = 20M
