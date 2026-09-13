@@ -34,6 +34,9 @@ function img_url(string $file): string {
 }
 
 function list_images(): array {
-    $files = glob(IMAGES_DIR . '/*.{jpg,jpeg,png,webp,gif}', GLOB_BRACE) ?: [];
+    $files = [];
+    foreach (['jpg', 'jpeg', 'png', 'webp', 'gif'] as $ext) {
+        $files = array_merge($files, glob(IMAGES_DIR . '/*.' . $ext) ?: []);
+    }
     return array_map('basename', $files);
 }
