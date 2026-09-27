@@ -47,6 +47,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $benefits = array_values(array_filter(array_map('trim', $p['benefits'] ?? []), fn($b) => $b !== ''));
     $service['benefits'] = $benefits;
 
+    $styles = array_values(array_filter(array_map('trim', $p['styles'] ?? []), fn($s) => $s !== ''));
+    $service['styles'] = $styles;
+
     $c['services'][$key] = $service;
     clev_save($c);
     flash('Service « ' . $service['title'] . ' » enregistré.');
@@ -124,6 +127,26 @@ admin_head('Modifier : ' . $service['title']);
           <div class="field">
             <label>Titre du bloc final (CTA, HTML léger autorisé)</label>
             <input type="text" name="cta_title" value="<?= h($service['cta_title']) ?>" />
+          </div>
+        </div>
+
+        <h2>Types de soins (réservation)</h2>
+        <div class="card">
+          <div class="field">
+            <label>Styles / types de soins proposés (un par champ)</label>
+            <?php foreach (($service['styles'] ?? []) as $st): ?>
+            <div class="repeat-row">
+              <input type="text" name="styles[]" value="<?= h($st) ?>" />
+            </div>
+            <?php endforeach; ?>
+            <div class="repeat-row">
+              <input type="text" name="styles[]" placeholder="Nouveau type de soin… (ex. Tissage, Perruque)" />
+            </div>
+            <p class="hint">
+              Ces types sont proposés au client lors de la réservation : sur la page du soin
+              (bouton « Réserver ce soin ») et dans le formulaire de contact de l'accueil.
+              Laissez vide pour ne pas proposer de choix.
+            </p>
           </div>
         </div>
 

@@ -14,10 +14,14 @@ function clev_content(): array {
 }
 
 function clev_save(array $data): void {
-    file_put_contents(
-        CONTENT_PATH,
-        json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)
-    );
+    $json = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    if ($json === false) {
+        return; // ne jamais écraser le fichier avec un encodage en échec
+    }
+    $tmp = CONTENT_PATH . '.tmp';
+    if (file_put_contents($tmp, $json, LOCK_EX) !== false) {
+        rename($tmp, CONTENT_PATH);
+    }
 }
 
 function h(string $s): string {

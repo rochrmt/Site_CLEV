@@ -74,7 +74,13 @@
             "detail_image": "gallery-extra-1.jpg",
             "cta_title": "Prête à prendre soin<br />de vos mains ?",
             "icon": "M15 33c3-10 4-19 9-19s6 9 9 19|M12 35h24M18 27h12M21 18V9M27 18V9",
-            "featured": false
+            "featured": false,
+            "styles": [
+                "Manucure classique",
+                "Manucure + vernis",
+                "Pédicure complète",
+                "Pose de gel / capsules"
+            ]
         },
         {
             "slug": "soins-du-visage",
@@ -94,7 +100,13 @@
             "detail_image": "facial-steamer.jpg",
             "cta_title": "Offrez à votre peau<br />un moment d'éclat",
             "icon": "M10 30c5-1 8-4 11-10 3 6 6 9 17 10|M9 34c9 5 21 5 30 0M24 8v7M17 11l3 6M31 11l-3 6",
-            "featured": true
+            "featured": true,
+            "styles": [
+                "Nettoyage profond",
+                "Soin hydratant",
+                "Soin éclat / anti-âge",
+                "Masque + massage facial"
+            ]
         },
         {
             "slug": "massage-epilation",
@@ -114,7 +126,13 @@
             "detail_image": "treatment-room.jpg",
             "cta_title": "Offrez-vous<br />un instant de détente",
             "icon": "M12 31c6-2 8-7 12-15 4 8 6 13 12 15|M9 35c9 5 21 5 30 0M24 8v4",
-            "featured": false
+            "featured": false,
+            "styles": [
+                "Massage relaxant",
+                "Massage du dos",
+                "Épilation jambes",
+                "Épilation complète"
+            ]
         },
         {
             "slug": "coiffure",
@@ -134,7 +152,15 @@
             "detail_image": "service-coiffure-2.jpg",
             "cta_title": "Envie d'un<br />nouveau style ?",
             "icon": "M13 35c2-9 3-16 11-22 8 6 9 13 11 22|M17 22c4 3 10 3 14 0M16 35h16",
-            "featured": false
+            "featured": false,
+            "styles": [
+                "Tissage",
+                "Pose de perruque",
+                "Perruque avec perles",
+                "Vanilles / Twists",
+                "Braids",
+                "Coupe & brushing"
+            ]
         },
         {
             "slug": "maquillage",
@@ -154,7 +180,12 @@
             "detail_image": "gallery-extra-1-aade94.jpg",
             "cta_title": "Prête à<br />rayonner ?",
             "icon": "m12 34 8-20 5 14 4-10 7 16|M10 36h28M17 10h6M28 14h5",
-            "featured": false
+            "featured": false,
+            "styles": [
+                "Maquillage jour / naturel",
+                "Maquillage soirée",
+                "Maquillage mariée"
+            ]
         },
         {
             "slug": "hammam-gommage",
@@ -174,7 +205,12 @@
             "detail_image": "treatment-preparation.jpg",
             "cta_title": "Offrez à votre corps<br />un rituel purifiant",
             "icon": "M12 34h24M15 34V20h18v14M19 20v-5h10v5|M19 28c3-4 7-4 10 0",
-            "featured": false
+            "featured": false,
+            "styles": [
+                "Hammam seul",
+                "Hammam + gommage",
+                "Gommage corps complet"
+            ]
         }
     ],
     "experience": {

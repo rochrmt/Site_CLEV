@@ -341,53 +341,238 @@ if (lightbox) {
   });
 }
 
+/* === Helpers réservation === */
+const markInvalid = (field) => {
+  field.style.borderColor = "var(--terracotta)";
+  field.addEventListener(
+    "input",
+    () => { field.style.borderColor = ""; },
+    { once: true },
+  );
+};
+
+const formatDate = (value) =>
+  value
+    ? new Date(value + "T00:00:00").toLocaleDateString("fr-FR", {
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      })
+    : "À définir ensemble";
+
+const openWhatsApp = (number, text) => {
+  window.open(`https://wa.me/${number}?text=${encodeURIComponent(text)}`, "_blank");
+};
+
 /* === Booking form → WhatsApp === */
 const bookingForm = document.getElementById("booking-form");
 
 if (bookingForm) {
   const WHATSAPP_NUMBER = CLEV.whatsapp || "23672679175";
+  const serviceSelect = document.getElementById("booking-service");
+  const styleField = document.getElementById("booking-style-field");
+  const styleSelect = document.getElementById("booking-style");
+  const stylesMap = CLEV.serviceStyles || {};
+
+  // Affiche les types de soins créés par l'admin pour le service choisi
+  serviceSelect.addEventListener("change", () => {
+    const option = serviceSelect.selectedOptions[0];
+    const styles = (option && stylesMap[option.dataset.slug]) || [];
+
+    styleSelect.innerHTML =
+      '<option value="" disabled selected>Choisissez un type de soin</option>';
+    styles.forEach((s) => {
+      const opt = document.createElement("option");
+      opt.value = s;
+      opt.textContent = s;
+      styleSelect.appendChild(opt);
+    });
+    const other = document.createElement("option");
+    other.value = "Autre / à définir ensemble";
+    other.textContent = "Autre / à définir ensemble";
+    styleSelect.appendChild(other);
+
+    const hasStyles = styles.length > 0;
+    styleField.hidden = !hasStyles;
+    styleSelect.disabled = !hasStyles;
+    styleSelect.required = hasStyles;
+  });
 
   bookingForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
     const name = document.getElementById("booking-name").value.trim();
     const phone = document.getElementById("booking-phone").value.trim();
-    const service = document.getElementById("booking-service").value;
+    const service = serviceSelect.value;
+    const style = styleSelect.required ? styleSelect.value : "";
     const date = document.getElementById("booking-date").value;
     const message = document.getElementById("booking-message").value.trim();
 
-    if (!name || !phone || !service) {
-      bookingForm.querySelectorAll("[required]").forEach((field) => {
-        if (!field.value.trim()) {
-          field.style.borderColor = "var(--terracotta)";
-          field.addEventListener(
-            "input",
-            () => { field.style.borderColor = ""; },
-            { once: true },
-          );
-        }
-      });
-      return;
+    let valid = true;
+    bookingForm.querySelectorAll("[required]").forEach((field) => {
+      if (!field.value.trim()) {
+        markInvalid(field);
+        valid = false;
+      }
+    });
+    if (styleSelect.required && !style) {
+      markInvalid(styleSelect);
+      valid = false;
     }
-
-    const dateText = date
-      ? new Date(date).toLocaleDateString("fr-FR", {
-          weekday: "long",
-          day: "numeric",
-          month: "long",
-          year: "numeric",
-        })
-      : "À définir ensemble";
+    if (!valid) return;
 
     const text =
       `Bonjour CLEV Beauty & Spa, je souhaite prendre rendez-vous.\n\n` +
       `*Nom :* ${name}\n` +
       `*Téléphone :* ${phone}\n` +
       `*Service :* ${service}\n` +
-      `*Date souhaitée :* ${dateText}\n` +
+      (style ? `*Type de soin :* ${style}\n` : "") +
+      `*Date souhaitée :* ${formatDate(date)}\n` +
       (message ? `*Précisions :* ${message}\n` : "") +
       `\nMerci de me confirmer la disponibilité.`;
 
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, "_blank");
+    openWhatsApp(WHATSAPP_NUMBER, text);
+  });
+}
+
+/* === Réservation par étapes (pages services) === */
+const bookingModal = document.querySelector("[data-booking-modal]");
+
+if (bookingModal) {
+  const WHATSAPP_NUMBER = CLEV.whatsapp || "23672679175";
+  const serviceTitle = (CLEV.service && CLEV.service.title) || "";
+  const form = bookingModal.querySelector("#service-booking-form");
+  const steps = Array.from(bookingModal.querySelectorAll("[data-step]"));
+  const prevBtn = bookingModal.querySelector("[data-step-prev]");
+  const nextBtn = bookingModal.querySelector("[data-step-next]");
+  const submitBtn = bookingModal.querySelector("[data-step-submit]");
+  const counter = bookingModal.querySelector("[data-step-counter]");
+  const progress = bookingModal.querySelector("[data-booking-progress]");
+  const chips = Array.from(bookingModal.querySelectorAll("[data-style-chip]"));
+  const styleError = bookingModal.querySelector("[data-style-error]");
+  const summary = bookingModal.querySelector("[data-summary]");
+  const closeBtn = bookingModal.querySelector("[data-booking-close]");
+
+  let currentStep = 0;
+  let selectedStyle = "";
+  let lastFocused = null;
+
+  steps.forEach(() => progress.appendChild(document.createElement("span")));
+  const dots = Array.from(progress.children);
+
+  const buildSummary = () => {
+    const name = document.getElementById("sb-name").value.trim();
+    const phone = document.getElementById("sb-phone").value.trim();
+    const date = document.getElementById("sb-date").value;
+    const message = document.getElementById("sb-message").value.trim();
+
+    const rows = [["Service", serviceTitle]];
+    if (selectedStyle) rows.push(["Type de soin", selectedStyle]);
+    rows.push(["Nom", name], ["Téléphone", phone], ["Date souhaitée", formatDate(date)]);
+    if (message) rows.push(["Précisions", message]);
+
+    summary.innerHTML = "";
+    rows.forEach(([label, value]) => {
+      const dt = document.createElement("dt");
+      dt.textContent = label;
+      const dd = document.createElement("dd");
+      dd.textContent = value;
+      summary.append(dt, dd);
+    });
+  };
+
+  const showStep = (index) => {
+    currentStep = index;
+    steps.forEach((step, i) => {
+      step.hidden = i !== index;
+      step.classList.toggle("is-active", i === index);
+    });
+    dots.forEach((dot, i) => dot.classList.toggle("is-active", i <= index));
+    counter.textContent = `Étape ${index + 1} sur ${steps.length}`;
+    prevBtn.hidden = index === 0;
+    nextBtn.hidden = index === steps.length - 1;
+    submitBtn.hidden = index !== steps.length - 1;
+    if (index === steps.length - 1) buildSummary();
+  };
+
+  const validateStep = (index) => {
+    const step = steps[index];
+    let valid = true;
+
+    if (step.querySelector("[data-style-chips]") && !selectedStyle) {
+      styleError.hidden = false;
+      valid = false;
+    }
+    step.querySelectorAll("[required]").forEach((field) => {
+      if (!field.value.trim()) {
+        markInvalid(field);
+        valid = false;
+      }
+    });
+    return valid;
+  };
+
+  chips.forEach((chip) => {
+    chip.addEventListener("click", () => {
+      selectedStyle = chip.dataset.value;
+      chips.forEach((c) => c.classList.toggle("is-selected", c === chip));
+      if (styleError) styleError.hidden = true;
+    });
+  });
+
+  nextBtn.addEventListener("click", () => {
+    if (validateStep(currentStep)) showStep(currentStep + 1);
+  });
+  prevBtn.addEventListener("click", () => showStep(currentStep - 1));
+
+  const openModal = (trigger) => {
+    lastFocused = trigger;
+    bookingModal.classList.add("is-open");
+    document.body.classList.add("booking-open");
+    showStep(0);
+    closeBtn.focus();
+  };
+
+  const closeModal = () => {
+    bookingModal.classList.remove("is-open");
+    document.body.classList.remove("booking-open");
+    if (lastFocused) lastFocused.focus();
+  };
+
+  document.querySelectorAll("[data-booking-open]").forEach((trigger) => {
+    trigger.addEventListener("click", (e) => {
+      e.preventDefault();
+      openModal(trigger);
+    });
+  });
+
+  closeBtn.addEventListener("click", closeModal);
+  bookingModal.addEventListener("click", (e) => {
+    if (e.target === bookingModal) closeModal();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && bookingModal.classList.contains("is-open")) closeModal();
+  });
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById("sb-name").value.trim();
+    const phone = document.getElementById("sb-phone").value.trim();
+    const date = document.getElementById("sb-date").value;
+    const message = document.getElementById("sb-message").value.trim();
+
+    const text =
+      `Bonjour CLEV Beauty & Spa, je souhaite prendre rendez-vous.\n\n` +
+      `*Service :* ${serviceTitle}\n` +
+      (selectedStyle ? `*Type de soin :* ${selectedStyle}\n` : "") +
+      `*Nom :* ${name}\n` +
+      `*Téléphone :* ${phone}\n` +
+      `*Date souhaitée :* ${formatDate(date)}\n` +
+      (message ? `*Précisions :* ${message}\n` : "") +
+      `\nMerci de me confirmer la disponibilité.`;
+
+    openWhatsApp(WHATSAPP_NUMBER, text);
   });
 }

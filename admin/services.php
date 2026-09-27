@@ -49,6 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'add')
         'detail_title' => $title,
         'detail_text'  => 'Décrivez ce service…',
         'benefits'     => ['Bénéfice 1', 'Bénéfice 2'],
+        'styles'       => [],
         'hero_image'   => $image,
         'detail_image' => $image,
         'cta_title'    => 'Réservez ce soin',
@@ -75,7 +76,12 @@ admin_head('Services');
         <img src="../assets/images/<?= h($s['hero_image']) ?>" alt="" />
         <div class="grow">
           <strong><?= h($s['title']) ?></strong>
-          <small><?= h($s['short']) ?></small>
+          <small>
+            <?= h($s['short']) ?>
+            <?php $n = count($s['styles'] ?? []); if ($n): ?>
+            <br /><em><?= $n ?> type<?= $n > 1 ? 's' : '' ?> de soin : <?= h(implode(', ', $s['styles'])) ?></em>
+            <?php endif; ?>
+          </small>
         </div>
         <div class="actions">
           <a class="btn btn-small btn-secondary" href="../service.php?slug=<?= h($s['slug']) ?>" target="_blank">Voir</a>

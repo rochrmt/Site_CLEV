@@ -12,6 +12,10 @@ $jsConfig = [
     'contactWords'     => $c['contact']['words'],
     'quotes'           => $c['quotes'],
     'whatsapp'         => $c['site']['whatsapp'],
+    'serviceStyles'    => array_combine(
+        array_column($c['services'], 'slug'),
+        array_map(fn($s) => array_values($s['styles'] ?? []), $c['services'])
+    ),
 ];
 
 require __DIR__ . '/inc/header.php';
@@ -204,7 +208,7 @@ require __DIR__ . '/inc/header.php';
               <select id="booking-service" name="service" required>
                 <option value="" disabled selected>Choisissez un soin</option>
                 <?php foreach ($c['services'] as $s): ?>
-                <option value="<?= h($s['title']) ?>"><?= h($s['title']) ?></option>
+                <option value="<?= h($s['title']) ?>" data-slug="<?= h($s['slug']) ?>"><?= h($s['title']) ?></option>
                 <?php endforeach; ?>
               </select>
             </div>
@@ -212,6 +216,12 @@ require __DIR__ . '/inc/header.php';
               <label for="booking-date">Date souhaitée</label>
               <input type="date" id="booking-date" name="date" />
             </div>
+          </div>
+          <div class="form-field" id="booking-style-field" hidden>
+            <label for="booking-style">Type de soin *</label>
+            <select id="booking-style" name="style" disabled>
+              <option value="" disabled selected>Choisissez un type de soin</option>
+            </select>
           </div>
           <div class="form-field">
             <label for="booking-message">Précisions (optionnel)</label>
